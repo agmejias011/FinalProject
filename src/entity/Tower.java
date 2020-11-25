@@ -86,40 +86,66 @@ public class Tower extends User {
     }
 
     public List<Tower> selectAll() {
-        List<Tower> list = new ArrayList<Tower>();
-        String sql;
-        ResultSet rs = null;
+//        List<Tower> list = new ArrayList<Tower>();
+//        String sql;
+//        ResultSet rs = null;
+//
+//        sql = "SELECT t.id, t.email, t.company_name, t.permit_number, t.latitude, t.longitude, t.price_mile, u.phone, u.user_type_id, u.fname, u.lname, u.street_address, u.city, u.state, u.zipcode, u.dob, u.blocked"
+//                + " FROM user u, tower t"
+//                + " WHERE t.email=u.email";
+//
+//        Database db = new Database();
+//        try {
+//            db.Connect();
+//            db.setStatement();
+//            rs = db.ExecuteQuery(sql);
+//            while (rs.next()) {
+//                Tower obj = readResult(rs);
+//                list.add(obj);
+//            }
+//        } catch (SQLException ex) {
+//            System.out.println(ex.toString());
+//        } finally {
+//            if (rs != null) {
+//                try {
+//                    rs.close();
+//                } catch (SQLException ex) {
+//                    System.out.println(ex.toString());
+//                }
+//            }
+//            try {
+//                db.Close();
+//            } catch (SQLException ex) {
+//                System.out.println(ex.toString());
+//            }
+//        }
 
-        sql = "SELECT t.id, t.email, t.company_name, t.permit_number, t.latitude, t.longitude, t.price_mile, u.phone, u.user_type_id, u.fname, u.lname, u.street_address, u.city, u.state, u.zipcode, u.dob, u.blocked"
-                + " FROM user u, tower t"
-                + " WHERE t.email=u.email";
-
-        Database db = new Database();
-        try {
-            db.Connect();
-            db.setStatement();
-            rs = db.ExecuteQuery(sql);
-            while (rs.next()) {
-                Tower obj = readResult(rs);
-                list.add(obj);
-            }
-        } catch (SQLException ex) {
-            System.out.println(ex.toString());
-        } finally {
-            if (rs != null) {
-                try {
-                    rs.close();
-                } catch (SQLException ex) {
-                    System.out.println(ex.toString());
-                }
-            }
-            try {
-                db.Close();
-            } catch (SQLException ex) {
-                System.out.println(ex.toString());
-            }
-        }
-
+    	 List<Tower> list = new ArrayList<Tower>();
+    	 
+        Tower myT = new Tower();
+    	 
+        myT.setBlocked("blocked");
+    	myT.setCity("Miami");    
+     	Date dob = new Date(1990,10,5);    	
+     	myT.setDob(dob);
+     	myT.setEmail("agonz1123@fiu.edu");
+     	myT.setFname("Andy");
+     	myT.setId(5);
+     	myT.setLname("Miller");
+     	myT.setPassword("1234");
+     	myT.setPhone("555-555-5555");
+     	myT.setState("FL");
+     	myT.setStreetAddress("520 w 5 st");
+     	myT.setUserTypeId(3);
+     	myT.setZipcode("33122");  
+     	myT.setCompanyName("ABC");
+     	myT.setLatitude(2.2);
+     	myT.setLongitude(2.3);
+     	myT.setPermitNumber("12345");
+     	myT.setPriceMile(2.24);  
+    		
+     	list.add(myT);
+     	
         return list;
     }
 
@@ -351,127 +377,202 @@ public class Tower extends User {
     }
 
     public List<Tower> SelectByStateCity(Location location) {
-        List<Tower> list = new ArrayList<Tower>();
-        String sql;
-        ResultSet rs = null;
-        Tower obj;
+//        List<Tower> list = new ArrayList<Tower>();
+//        String sql;
+//        ResultSet rs = null;
+//        Tower obj;
+//
+//        sql = "SELECT t.id, t.email, t.company_name, t.permit_number, t.price_mile, u.user_type_id, u.fname, u.lname, u.street_address, u.city, u.state, u.zipcode, u.dob, u.blocked"
+//                + " FROM user u, tower t"
+//                + " WHERE t.email=u.email AND u.state='" + getState() + "' AND u.city='" + getCity() + "'";
+//
+//        //Database db = new Database();
+//        Database db = Database.getInstance();
+//        try {
+//            db.Connect();
+//            db.setStatement();
+//            rs = db.ExecuteQuery(sql);
+//            while (rs.next()) {
+//                obj = readResult(rs);
+//                list.add(obj);
+//            }
+//            List<Tower> orderedList = orderList(list);
+//        } catch (SQLException ex) {
+//            System.out.println(ex.toString());
+//        } finally {
+//            if (rs != null) {
+//                try {
+//                    rs.close();
+//                } catch (SQLException ex) {
+//                    System.out.println(ex.toString());
+//                }
+//            }
+//            try {
+//                db.Close();
+//            } catch (SQLException ex) {
+//                System.out.println(ex.toString());
+//            }
+//        }
 
-        sql = "SELECT t.id, t.email, t.company_name, t.permit_number, t.price_mile, u.user_type_id, u.fname, u.lname, u.street_address, u.city, u.state, u.zipcode, u.dob, u.blocked"
-                + " FROM user u, tower t"
-                + " WHERE t.email=u.email AND u.state='" + getState() + "' AND u.city='" + getCity() + "'";
-
-        //Database db = new Database();
-        Database db = Database.getInstance();
-        try {
-            db.Connect();
-            db.setStatement();
-            rs = db.ExecuteQuery(sql);
-            while (rs.next()) {
-                obj = readResult(rs);
-                list.add(obj);
-            }
-            List<Tower> orderedList = orderList(list);
-        } catch (SQLException ex) {
-            System.out.println(ex.toString());
-        } finally {
-            if (rs != null) {
-                try {
-                    rs.close();
-                } catch (SQLException ex) {
-                    System.out.println(ex.toString());
-                }
-            }
-            try {
-                db.Close();
-            } catch (SQLException ex) {
-                System.out.println(ex.toString());
-            }
-        }
-
+    	List<Tower> list = new ArrayList<Tower>();
+    	 Tower myT = new Tower();
+    	 
+        myT.setBlocked("blocked");
+     	myT.setCity("Miami");    
+      	Date dob = new Date(1990,10,5);    	
+      	myT.setDob(dob);
+      	myT.setEmail("agonz1123@fiu.edu");
+      	myT.setFname("Andy");
+      	myT.setId(5);
+      	myT.setLname("Miller");
+      	myT.setPassword("1234");
+      	myT.setPhone("555-555-5555");
+      	myT.setState("FL");
+      	myT.setStreetAddress("520 w 5 st");
+      	myT.setUserTypeId(3);
+      	myT.setZipcode("33122");  
+      	myT.setCompanyName("ABC");
+      	myT.setLatitude(2.2);
+      	myT.setLongitude(2.3);
+      	myT.setPermitNumber("12345");
+      	myT.setPriceMile(2.24);  
+     		
+      	list.add(myT);
+      	
         return list;
     }
 
     List<Tower> SelectByRating() {
+//      List<Tower> list = new ArrayList<Tower>();
+//        String sql;
+//        ResultSet rs = null;
+//        Tower obj;
+//
+//        sql = "SELECT t.id, t.email, t.company_name, t.permit_number, t.price_mile, AVG(ht.tower_rating) as tower_rating,"
+//                + " u.user_type_id, u.fname, u.lname, u.street_address, u.city, u.state, u.zipcode, u.dob, u.blocked"
+//                + " FROM user u, tower t, has_tower ht"
+//                + " WHERE t.email=u.email AND ht.tower_id=t.id AND u.state='" + getState() + "'"
+//                + " AND u.city='" + getCity() + "'"
+//                + " ORDER BY tower_rating";
+//
+//        //Database db = new Database();
+//        Database db = Database.getInstance();
+//        try {
+//            db.Connect();
+//            db.setStatement();
+//            rs = db.ExecuteQuery(sql);
+//            while (rs.next()) {
+//                obj = readResult(rs);
+//                list.add(obj);
+//            }
+//        } catch (SQLException ex) {
+//            System.out.println(ex.toString());
+//        } finally {
+//            if (rs != null) {
+//                try {
+//                    rs.close();
+//                } catch (SQLException ex) {
+//                    System.out.println(ex.toString());
+//                }
+//            }
+//            try {
+//                db.Close();
+//            } catch (SQLException ex) {
+//                System.out.println(ex.toString());
+//            }
+//        }
+
         List<Tower> list = new ArrayList<Tower>();
-        String sql;
-        ResultSet rs = null;
-        Tower obj;
-
-        sql = "SELECT t.id, t.email, t.company_name, t.permit_number, t.price_mile, AVG(ht.tower_rating) as tower_rating,"
-                + " u.user_type_id, u.fname, u.lname, u.street_address, u.city, u.state, u.zipcode, u.dob, u.blocked"
-                + " FROM user u, tower t, has_tower ht"
-                + " WHERE t.email=u.email AND ht.tower_id=t.id AND u.state='" + getState() + "'"
-                + " AND u.city='" + getCity() + "'"
-                + " ORDER BY tower_rating";
-
-        //Database db = new Database();
-        Database db = Database.getInstance();
-        try {
-            db.Connect();
-            db.setStatement();
-            rs = db.ExecuteQuery(sql);
-            while (rs.next()) {
-                obj = readResult(rs);
-                list.add(obj);
-            }
-        } catch (SQLException ex) {
-            System.out.println(ex.toString());
-        } finally {
-            if (rs != null) {
-                try {
-                    rs.close();
-                } catch (SQLException ex) {
-                    System.out.println(ex.toString());
-                }
-            }
-            try {
-                db.Close();
-            } catch (SQLException ex) {
-                System.out.println(ex.toString());
-            }
-        }
-
+   	 	Tower myT = new Tower();
+   	 
+       myT.setBlocked("blocked");
+    	myT.setCity("Miami");    
+     	Date dob = new Date(1990,10,5);    	
+     	myT.setDob(dob);
+     	myT.setEmail("agonz1123@fiu.edu");
+     	myT.setFname("Andy");
+     	myT.setId(5);
+     	myT.setLname("Miller");
+     	myT.setPassword("1234");
+     	myT.setPhone("555-555-5555");
+     	myT.setState("FL");
+     	myT.setStreetAddress("520 w 5 st");
+     	myT.setUserTypeId(3);
+     	myT.setZipcode("33122");  
+     	myT.setCompanyName("ABC");
+     	myT.setLatitude(2.2);
+     	myT.setLongitude(2.3);
+     	myT.setPermitNumber("12345");
+     	myT.setPriceMile(2.24);  
+    		
+     	list.add(myT);
+        
         return list;
     }
 
     List<Tower> SelectByPrice() {
-        List<Tower> list = new ArrayList<Tower>();
-        String sql;
-        ResultSet rs = null;
-        Tower obj;
+//        List<Tower> list = new ArrayList<Tower>();
+//        String sql;
+//        ResultSet rs = null;
+//        Tower obj;
+//
+//        sql = "SELECT t.id, t.email, t.company_name, t.permit_number, t.price_mile, u.user_type_id, u.fname, u.lname, u.street_address, u.city, u.state, u.zipcode, u.dob, u.blocked"
+//                + " FROM user u, tower t"
+//                + " WHERE t.email=u.email AND u.state='" + getState() + "' AND u.city='" + getCity() + "'"
+//                + " ORDER BY t.price_mile DESC";
+//
+//        //Database db = new Database();
+//        Database db = Database.getInstance();
+//        try {
+//            db.Connect();
+//            db.setStatement();
+//            rs = db.ExecuteQuery(sql);
+//            while (rs.next()) {
+//                obj = readResult(rs);
+//                list.add(obj);
+//            }
+//        } catch (SQLException ex) {
+//            System.out.println(ex.toString());
+//        } finally {
+//            if (rs != null) {
+//                try {
+//                    rs.close();
+//                } catch (SQLException ex) {
+//                    System.out.println(ex.toString());
+//                }
+//            }
+//            try {
+//                db.Close();
+//            } catch (SQLException ex) {
+//                System.out.println(ex.toString());
+//            }
+//        }
 
-        sql = "SELECT t.id, t.email, t.company_name, t.permit_number, t.price_mile, u.user_type_id, u.fname, u.lname, u.street_address, u.city, u.state, u.zipcode, u.dob, u.blocked"
-                + " FROM user u, tower t"
-                + " WHERE t.email=u.email AND u.state='" + getState() + "' AND u.city='" + getCity() + "'"
-                + " ORDER BY t.price_mile DESC";
-
-        //Database db = new Database();
-        Database db = Database.getInstance();
-        try {
-            db.Connect();
-            db.setStatement();
-            rs = db.ExecuteQuery(sql);
-            while (rs.next()) {
-                obj = readResult(rs);
-                list.add(obj);
-            }
-        } catch (SQLException ex) {
-            System.out.println(ex.toString());
-        } finally {
-            if (rs != null) {
-                try {
-                    rs.close();
-                } catch (SQLException ex) {
-                    System.out.println(ex.toString());
-                }
-            }
-            try {
-                db.Close();
-            } catch (SQLException ex) {
-                System.out.println(ex.toString());
-            }
-        }
-
+    	List<Tower> list = new ArrayList<Tower>();
+   	 	Tower myT = new Tower();
+   	 
+       myT.setBlocked("blocked");
+    	myT.setCity("Miami");    
+     	Date dob = new Date(1990,10,5);    	
+     	myT.setDob(dob);
+     	myT.setEmail("agonz1123@fiu.edu");
+     	myT.setFname("Andy");
+     	myT.setId(5);
+     	myT.setLname("Miller");
+     	myT.setPassword("1234");
+     	myT.setPhone("555-555-5555");
+     	myT.setState("FL");
+     	myT.setStreetAddress("520 w 5 st");
+     	myT.setUserTypeId(3);
+     	myT.setZipcode("33122");  
+     	myT.setCompanyName("ABC");
+     	myT.setLatitude(2.2);
+     	myT.setLongitude(2.3);
+     	myT.setPermitNumber("12345");
+     	myT.setPriceMile(2.24);  
+    		
+     	list.add(myT);
+     	
         return list;
     }
 

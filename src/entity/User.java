@@ -338,70 +338,73 @@ public class User {
 
     //Blocks user
     public boolean block() {
-        boolean resp = false;
-        int parameterIndex = 0;
+//        boolean resp = false;
+//        int parameterIndex = 0;
+//
+//        String sql = "UPDATE user SET blocked=? WHERE email=?";
+//
+//        Database db = Database.getInstance();
+//        try {
+//            db.Connect();
+//            db.setPreparedStatement(sql);
+//            db.getPreparedStatement().setString(++parameterIndex, this.getBlocked());
+//            db.getPreparedStatement().setString(++parameterIndex, this.getEmail());
+//            db.ExecuteNonQuery();
+//            resp = true;
+//        } catch (SQLException ex) {
+//            Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
+//        } finally {
+//            if (db != null) {
+//                try {
+//                    db.Close();
+//                } catch (SQLException ex) {
+//                    Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
+//                }
+//            }
+//        }
 
-        String sql = "UPDATE user SET blocked=? WHERE email=?";
-
-        Database db = Database.getInstance();
-        try {
-            db.Connect();
-            db.setPreparedStatement(sql);
-            db.getPreparedStatement().setString(++parameterIndex, this.getBlocked());
-            db.getPreparedStatement().setString(++parameterIndex, this.getEmail());
-            db.ExecuteNonQuery();
-            resp = true;
-        } catch (SQLException ex) {
-            Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            if (db != null) {
-                try {
-                    db.Close();
-                } catch (SQLException ex) {
-                    Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        }
-
+    	 boolean resp = true;
         return resp;
     }
 
     //Blocks updates User information
     public boolean update() {
-        boolean resp = false;
-        int parameterIndex = 0;
+//        boolean resp = false;
+//        int parameterIndex = 0;
 
-        String sql = "UPDATE user SET fname=?, lname=?, phone=?, street_address=?, city=?, state=?, zipcode=?, dob=? WHERE email=?";
+//        String sql = "UPDATE user SET fname=?, lname=?, phone=?, street_address=?, city=?, state=?, zipcode=?, dob=? WHERE email=?";
+//
+//        Database db = Database.getInstance();
+//        try {
+//            db.Connect();
+//            db.setPreparedStatement(sql);
+//            db.getPreparedStatement().setString(++parameterIndex, this.getFname());
+//            db.getPreparedStatement().setString(++parameterIndex, this.getLname());
+//            db.getPreparedStatement().setString(++parameterIndex, this.getPhone());
+//            db.getPreparedStatement().setString(++parameterIndex, this.getStreetAddress());
+//            db.getPreparedStatement().setString(++parameterIndex, this.getCity());
+//            db.getPreparedStatement().setString(++parameterIndex, this.getState());
+//            db.getPreparedStatement().setString(++parameterIndex, this.getCity());
+//            db.getPreparedStatement().setString(++parameterIndex, this.getState());
+//            db.getPreparedStatement().setString(++parameterIndex, this.getZipcode());
+//            db.getPreparedStatement().setDate(++parameterIndex, this.getDob() != null ? new java.sql.Date(this.getDob().getTime()) : null);
+//            db.getPreparedStatement().setString(++parameterIndex, this.getEmail());
+//            db.ExecuteNonQuery();
+//            resp = true;
+//        } catch (SQLException ex) {
+//            Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
+//        } finally {
+//            if (db != null) {
+//                try {
+//                    db.Close();
+//                } catch (SQLException ex) {
+//                    Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
+//                }
+//            }
+//        }
 
-        Database db = Database.getInstance();
-        try {
-            db.Connect();
-            db.setPreparedStatement(sql);
-            db.getPreparedStatement().setString(++parameterIndex, this.getFname());
-            db.getPreparedStatement().setString(++parameterIndex, this.getLname());
-            db.getPreparedStatement().setString(++parameterIndex, this.getPhone());
-            db.getPreparedStatement().setString(++parameterIndex, this.getStreetAddress());
-            db.getPreparedStatement().setString(++parameterIndex, this.getCity());
-            db.getPreparedStatement().setString(++parameterIndex, this.getState());
-            db.getPreparedStatement().setString(++parameterIndex, this.getCity());
-            db.getPreparedStatement().setString(++parameterIndex, this.getState());
-            db.getPreparedStatement().setString(++parameterIndex, this.getZipcode());
-            db.getPreparedStatement().setDate(++parameterIndex, this.getDob() != null ? new java.sql.Date(this.getDob().getTime()) : null);
-            db.getPreparedStatement().setString(++parameterIndex, this.getEmail());
-            db.ExecuteNonQuery();
-            resp = true;
-        } catch (SQLException ex) {
-            Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            if (db != null) {
-                try {
-                    db.Close();
-                } catch (SQLException ex) {
-                    Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        }
-
+    	 boolean resp = true;
+    	 
         return resp;
     }
 

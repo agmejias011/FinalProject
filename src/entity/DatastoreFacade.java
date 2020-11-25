@@ -6,6 +6,8 @@
 package entity;
 
 import util.Location;
+
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -130,10 +132,11 @@ public class DatastoreFacade {
     }
 
     public List<Tower> selectTowerByAddress(String address) {
-        List<Tower> list = null;
+        List<Tower> list = new ArrayList<Tower>();
         List<Tower> listAux;
         Tower tower = new Tower();
         listAux = tower.selectAll();
+        
         for (int i = 0; i < listAux.size(); i++) {
             list.add(listAux.get(i));
             for (int j = 0; i < list.size(); i++) {

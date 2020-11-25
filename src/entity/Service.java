@@ -551,74 +551,99 @@ public class Service {
     }
     
     public List<Service> selectServiceByClientEmail(String clientEmail) {
-        List<Service> list = new ArrayList<Service>();
-        String sql;
-        ResultSet rs = null;
+ //       List<Service> list = new ArrayList<Service>();
+//        String sql;
+//        ResultSet rs = null;
+//
+//        sql = "SELECT s.id, s.client_id, s.creation_date, s.start_date, s.end_date, s.cancel_date, s.cost,"
+//                + " s.latitude_pickup, s.longitude_pickup, s.latitude_destination, s.longitude_destination,"
+//                + " s.street_address_pickup, s.city_pickup, s.state_pickup, s.zipcode_pickup,"
+//                + " s.street_address_destination, s.city_destination, s.state_destination, s.zipcode_destination,"
+//                + " s.client_description, s.tower_description"
+//                + " FROM service s, client c"
+//                + " WHERE c.id=s.client_id AND c.email='"+clientEmail+"'";
+//
+//        Database db = Database.getInstance();
+//        try {
+//            db.Connect();
+//            db.setStatement();
+//            rs = db.ExecuteQuery(sql);
+//            //System.out.println("Service: "+sql);
+//            while (rs.next()) {
+//                Service service = readResulset(rs);
+//                list.add(service);
+//            }
+//        } catch (SQLException ex) {
+//            System.out.println(ex.toString());
+//        } finally {
+//            if (rs != null) {
+//                try {
+//                    rs.close();
+//                } catch (SQLException ex) {
+//                    System.out.println(ex.toString());
+//                }
+//            }
+//            try {
+//                db.Close();
+//            } catch (SQLException ex) {
+//                System.out.println(ex.toString());
+//            }
+//        }
 
-        sql = "SELECT s.id, s.client_id, s.creation_date, s.start_date, s.end_date, s.cancel_date, s.cost,"
-                + " s.latitude_pickup, s.longitude_pickup, s.latitude_destination, s.longitude_destination,"
-                + " s.street_address_pickup, s.city_pickup, s.state_pickup, s.zipcode_pickup,"
-                + " s.street_address_destination, s.city_destination, s.state_destination, s.zipcode_destination,"
-                + " s.client_description, s.tower_description"
-                + " FROM service s, client c"
-                + " WHERE c.id=s.client_id AND c.email='"+clientEmail+"'";
-
-        Database db = Database.getInstance();
-        try {
-            db.Connect();
-            db.setStatement();
-            rs = db.ExecuteQuery(sql);
-            //System.out.println("Service: "+sql);
-            while (rs.next()) {
-                Service service = readResulset(rs);
-                list.add(service);
-            }
-        } catch (SQLException ex) {
-            System.out.println(ex.toString());
-        } finally {
-            if (rs != null) {
-                try {
-                    rs.close();
-                } catch (SQLException ex) {
-                    System.out.println(ex.toString());
-                }
-            }
-            try {
-                db.Close();
-            } catch (SQLException ex) {
-                System.out.println(ex.toString());
-            }
-        }
-
-        return list;
+     List<Service> list = new ArrayList<Service>();
+   	 id = 1234;
+   	 clientId = 3456;
+   	 creationDate = new Date(123456);
+   	 startDate = new Date(234567);
+   	 endDate = new Date(345678);
+   	 cancelDate = new Date(456789);
+   	 cost = 5.0;
+   	 latitudePickup = 65.5;
+   	 longitudePickup = 66.6;
+   	 latitudeDestination = 85.5;
+   	 longitudeDestination = 86.6;
+   	 streetAddressPickup = "CASE212A";
+   	 cityPickup = "Miami";
+   	 statePickup = "FL";
+   	 zipcodePickup = "33199";
+   	 streetAddressDestination = "PG6";
+   	 cityDestination = "Miami";
+   	 stateDestination = "FL";
+   	 zipcodeDestination = "33199";
+   	 clientDescription = "student";
+   	 towerDescription = "tall";
+   	 list.add(this);
+   	 
+       return list;
     }
 
     boolean updatePickup(String address, Integer serviceId) {
-        boolean resp = false;
-        int parameterIndex = 0;
+//       boolean resp = false;
+//        int parameterIndex = 0;
+//
+//        String sql = "UPDATE service SET street_address_pickup=? WHERE id=?";
+//
+//        Database db = Database.getInstance();
+//        try {
+//            db.Connect();
+//            db.setPreparedStatement(sql);
+//            db.getPreparedStatement().setString(++parameterIndex, this.getStreetAddressPickup());
+//            db.getPreparedStatement().setInt(++parameterIndex, this.getId());
+//            db.ExecuteNonQuery();
+//            resp = true;
+//        } catch (SQLException ex) {
+//            Logger.getLogger(Service.class.getName()).log(Level.SEVERE, null, ex);
+//        } finally {
+//            if (db != null) {
+//                try {
+//                    db.Close();
+//                } catch (SQLException ex) {
+//                    Logger.getLogger(Service.class.getName()).log(Level.SEVERE, null, ex);
+//                }
+//            }
+//        }
 
-        String sql = "UPDATE service SET street_address_pickup=? WHERE id=?";
-
-        Database db = Database.getInstance();
-        try {
-            db.Connect();
-            db.setPreparedStatement(sql);
-            db.getPreparedStatement().setString(++parameterIndex, this.getStreetAddressPickup());
-            db.getPreparedStatement().setInt(++parameterIndex, this.getId());
-            db.ExecuteNonQuery();
-            resp = true;
-        } catch (SQLException ex) {
-            Logger.getLogger(Service.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            if (db != null) {
-                try {
-                    db.Close();
-                } catch (SQLException ex) {
-                    Logger.getLogger(Service.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        }
-
+        boolean resp = true;
         return resp;
     }
 
