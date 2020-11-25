@@ -5,7 +5,6 @@
  */
 package entity;
 
-
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonSyntaxException;
@@ -136,16 +135,17 @@ public class User {
         this.phone = phone;
     }
 
-    //TRUE if email and password matches one registry in DB
+    // TRUE if email and password matches one registry in DB
     public boolean validateUser(String email, String pass) {
         boolean respuesta = false;
         String sql;
         ResultSet rs = null;
 
-        sql = "SELECT email, user_type_id, fname, lname, phone, street_address, city, state, zipcode, dob, blocked FROM user WHERE email='" + email + "' AND password='" + pass + "'  AND (blocked!='' OR blocked is null)";
+        sql = "SELECT email, user_type_id, fname, lname, phone, street_address, city, state, zipcode, dob, blocked FROM user WHERE email='"
+                + email + "' AND password='" + pass + "'  AND (blocked!='' OR blocked is null)";
 
         Database db = Database.getInstance();
-        //Database db = new Database();
+        // Database db = new Database();
         try {
             db.Connect();
             db.setStatement();
@@ -186,17 +186,17 @@ public class User {
         return respuesta;
     }
 
-    //TRUE if User was created successfully
+    // TRUE if User was created successfully
     public boolean createUser() {
 
         boolean resp = false;
-        //int parameterIndex = 0;
+        // int parameterIndex = 0;
 
         String sql = "INSERT INTO user (email, password, user_type_id, phone, fname, lname, street_address, city, state, zipcode, dob)"
                 + " VALUES (?,?,?,?,?,?,?,?,?,?,?)";
 
         Database db = Database.getInstance();
-        //Database db = new Database();
+        // Database db = new Database();
         try {
             db.Connect();
             db.setPreparedStatement(sql);
@@ -218,7 +218,7 @@ public class User {
         return resp;
     }
 
-    //Returns all existing users in DB
+    // Returns all existing users in DB
     public List<User> SelectAll() {
         List<User> list = new ArrayList<User>();
         String sql;
@@ -255,10 +255,11 @@ public class User {
         return list;
     }
 
-    //add all values present in User Object
+    // add all values present in User Object
     private void addValues(Database db) throws SQLException {
         Integer parameterIndex = 0;
-        //email, password, user_type_id, phone, fname, lname, street_address, city, state, zipcode, dob
+        // email, password, user_type_id, phone, fname, lname, street_address, city,
+        // state, zipcode, dob
         db.getPreparedStatement().setString(++parameterIndex, this.getEmail().trim());
         db.getPreparedStatement().setString(++parameterIndex, this.getPassword());
         db.getPreparedStatement().setInt(++parameterIndex, this.getUserTypeId());
@@ -269,10 +270,11 @@ public class User {
         db.getPreparedStatement().setString(++parameterIndex, this.getCity());
         db.getPreparedStatement().setString(++parameterIndex, this.getState());
         db.getPreparedStatement().setString(++parameterIndex, this.getZipcode());
-        db.getPreparedStatement().setDate(++parameterIndex, this.getDob() != null ? new java.sql.Date(this.getDob().getTime()) : null);
+        db.getPreparedStatement().setDate(++parameterIndex,
+                this.getDob() != null ? new java.sql.Date(this.getDob().getTime()) : null);
     }
 
-    //Returns User with information in ResultSet
+    // Returns User with information in ResultSet
     private User readResult(ResultSet rs) throws SQLException {
         User obj = new User();
         obj.setEmail(rs.getString("email"));
@@ -297,15 +299,14 @@ public class User {
         return list;
     }
 
-    //Select a list of users that match email
+    // Select a list of users that match email
     public List<User> selectByEmail(String email) {
         List<User> list = new ArrayList<User>();
         String sql;
         ResultSet rs = null;
 
         sql = "SELECT email, password, user_type_id, fname, lname, phone, street_address, city, state, zipcode, dob, blocked"
-                + " FROM user"
-                + " WHERE email='" + email + "'";
+                + " FROM user" + " WHERE email='" + email + "'";
 
         Database db = new Database();
         try {
@@ -336,76 +337,82 @@ public class User {
         return list;
     }
 
-    //Blocks user
+    // Blocks user
     public boolean block() {
-        boolean resp = false;
-        int parameterIndex = 0;
+        // boolean resp = false;
+        // int parameterIndex = 0;
+        //
+        // String sql = "UPDATE user SET blocked=? WHERE email=?";
+        //
+        // Database db = Database.getInstance();
+        // try {
+        // db.Connect();
+        // db.setPreparedStatement(sql);
+        // db.getPreparedStatement().setString(++parameterIndex, this.getBlocked());
+        // db.getPreparedStatement().setString(++parameterIndex, this.getEmail());
+        // db.ExecuteNonQuery();
+        // resp = true;
+        // } catch (SQLException ex) {
+        // Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
+        // } finally {
+        // if (db != null) {
+        // try {
+        // db.Close();
+        // } catch (SQLException ex) {
+        // Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
+        // }
+        // }
+        // }
 
-        String sql = "UPDATE user SET blocked=? WHERE email=?";
-
-        Database db = Database.getInstance();
-        try {
-            db.Connect();
-            db.setPreparedStatement(sql);
-            db.getPreparedStatement().setString(++parameterIndex, this.getBlocked());
-            db.getPreparedStatement().setString(++parameterIndex, this.getEmail());
-            db.ExecuteNonQuery();
-            resp = true;
-        } catch (SQLException ex) {
-            Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            if (db != null) {
-                try {
-                    db.Close();
-                } catch (SQLException ex) {
-                    Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        }
-
+        boolean resp = true;
         return resp;
     }
 
-    //Blocks updates User information
+    // Blocks updates User information
     public boolean update() {
-        boolean resp = false;
-        int parameterIndex = 0;
+        // boolean resp = false;
+        // int parameterIndex = 0;
 
-        String sql = "UPDATE user SET fname=?, lname=?, phone=?, street_address=?, city=?, state=?, zipcode=?, dob=? WHERE email=?";
+        // String sql = "UPDATE user SET fname=?, lname=?, phone=?, street_address=?,
+        // city=?, state=?, zipcode=?, dob=? WHERE email=?";
+        //
+        // Database db = Database.getInstance();
+        // try {
+        // db.Connect();
+        // db.setPreparedStatement(sql);
+        // db.getPreparedStatement().setString(++parameterIndex, this.getFname());
+        // db.getPreparedStatement().setString(++parameterIndex, this.getLname());
+        // db.getPreparedStatement().setString(++parameterIndex, this.getPhone());
+        // db.getPreparedStatement().setString(++parameterIndex,
+        // this.getStreetAddress());
+        // db.getPreparedStatement().setString(++parameterIndex, this.getCity());
+        // db.getPreparedStatement().setString(++parameterIndex, this.getState());
+        // db.getPreparedStatement().setString(++parameterIndex, this.getCity());
+        // db.getPreparedStatement().setString(++parameterIndex, this.getState());
+        // db.getPreparedStatement().setString(++parameterIndex, this.getZipcode());
+        // db.getPreparedStatement().setDate(++parameterIndex, this.getDob() != null ?
+        // new java.sql.Date(this.getDob().getTime()) : null);
+        // db.getPreparedStatement().setString(++parameterIndex, this.getEmail());
+        // db.ExecuteNonQuery();
+        // resp = true;
+        // } catch (SQLException ex) {
+        // Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
+        // } finally {
+        // if (db != null) {
+        // try {
+        // db.Close();
+        // } catch (SQLException ex) {
+        // Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
+        // }
+        // }
+        // }
 
-        Database db = Database.getInstance();
-        try {
-            db.Connect();
-            db.setPreparedStatement(sql);
-            db.getPreparedStatement().setString(++parameterIndex, this.getFname());
-            db.getPreparedStatement().setString(++parameterIndex, this.getLname());
-            db.getPreparedStatement().setString(++parameterIndex, this.getPhone());
-            db.getPreparedStatement().setString(++parameterIndex, this.getStreetAddress());
-            db.getPreparedStatement().setString(++parameterIndex, this.getCity());
-            db.getPreparedStatement().setString(++parameterIndex, this.getState());
-            db.getPreparedStatement().setString(++parameterIndex, this.getCity());
-            db.getPreparedStatement().setString(++parameterIndex, this.getState());
-            db.getPreparedStatement().setString(++parameterIndex, this.getZipcode());
-            db.getPreparedStatement().setDate(++parameterIndex, this.getDob() != null ? new java.sql.Date(this.getDob().getTime()) : null);
-            db.getPreparedStatement().setString(++parameterIndex, this.getEmail());
-            db.ExecuteNonQuery();
-            resp = true;
-        } catch (SQLException ex) {
-            Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            if (db != null) {
-                try {
-                    db.Close();
-                } catch (SQLException ex) {
-                    Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        }
+        boolean resp = true;
 
         return resp;
     }
 
-    /*public Integer selectIdByEmail(String email) {
-        return null;
-    }*/
+    /*
+     * public Integer selectIdByEmail(String email) { return null; }
+     */
 }

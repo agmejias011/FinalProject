@@ -5,12 +5,12 @@
  */
 package entity;
 
-
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonSyntaxException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -78,7 +78,7 @@ public class Client extends User {
         sql = "SELECT c.id, c.email, u.user_type_id, u.fname, u.lname, u.street_address, u.city, u.state, u.zipcode, u.dob, u.blocked FROM user u, client c"
                 + " WHERE c.email=u.email";
 
-        //Database db = new Database();
+        // Database db = new Database();
         Database db = Database.getInstance();
         try {
             db.Connect();
@@ -114,7 +114,7 @@ public class Client extends User {
 
         sql = "SELECT id FROM client WHERE email='" + this.getEmail() + "'";
 
-        //Database db = new Database();
+        // Database db = new Database();
         Database db = Database.getInstance();
         try {
             db.Connect();
@@ -143,7 +143,7 @@ public class Client extends User {
     }
 
     public Client selectById(Integer clientId) {
-        //List<Client> list = new ArrayList<Client>();
+        // List<Client> list = new ArrayList<Client>();
         String sql;
         ResultSet rs = null;
         Client obj = null;
@@ -151,7 +151,7 @@ public class Client extends User {
         sql = "SELECT c.id, c.email, u.user_type_id, u.fname, u.lname, u.street_address, u.city, u.state, u.zipcode, u.dob, u.blocked FROM user u, client c"
                 + " WHERE c.email=u.email AND c.id=" + clientId;
 
-        //Database db = new Database();
+        // Database db = new Database();
         Database db = Database.getInstance();
         try {
             db.Connect();
@@ -209,46 +209,69 @@ public class Client extends User {
         return list;
     }
 
+    @SuppressWarnings("deprecation")
     public List<Client> selectClientByEmail(String email) {
+        // List<Client> list = new ArrayList<Client>();
+        // String sql;
+        // ResultSet rs = null;
+        // Client obj = null;
+        //
+        // sql = "SELECT c.id, c.email, u.user_type_id, u.fname, u.lname,
+        // u.street_address, u.city, u.state, u.zipcode, u.dob, u.blocked FROM user u,
+        // client c"
+        // + " WHERE c.email=u.email AND u.email='" + email + "'";
+        //
+        // //Database db = new Database();
+        // Database db = Database.getInstance();
+        // try {
+        // db.Connect();
+        // db.setStatement();
+        // rs = db.ExecuteQuery(sql);
+        // while (rs.next()) {
+        // obj = readResult(rs);
+        // list.add(obj);
+        // }
+        // } catch (SQLException ex) {
+        // System.out.println(ex.toString());
+        // } finally {
+        // if (rs != null) {
+        // try {
+        // rs.close();
+        // } catch (SQLException ex) {
+        // System.out.println(ex.toString());
+        // }
+        // }
+        // try {
+        // db.Close();
+        // } catch (SQLException ex) {
+        // System.out.println(ex.toString());
+        // }
+        // }
+
         List<Client> list = new ArrayList<Client>();
-        String sql;
-        ResultSet rs = null;
-        Client obj = null;
 
-        sql = "SELECT c.id, c.email, u.user_type_id, u.fname, u.lname, u.street_address, u.city, u.state, u.zipcode, u.dob, u.blocked FROM user u, client c"
-                + " WHERE c.email=u.email AND u.email='" + email + "'";
+        Client client = new Client();
+        client.setBlocked("blocked");
+        client.setCity("Miami");
+        Date dob = new Date(1990, 10, 5);
+        client.setDob(dob);
+        client.setEmail("agonz1123@fiu.edu");
+        client.setFname("Andy");
+        client.setId(5);
+        client.setLname("Miller");
+        client.setPassword("1234");
+        client.setPhone("555-555-5555");
+        client.setState("FL");
+        client.setStreetAddress("520 w 5 st");
+        client.setUserTypeId(3);
+        client.setZipcode("33122");
 
-        //Database db = new Database();
-        Database db = Database.getInstance();
-        try {
-            db.Connect();
-            db.setStatement();
-            rs = db.ExecuteQuery(sql);
-            while (rs.next()) {
-                obj = readResult(rs);
-                list.add(obj);
-            }
-        } catch (SQLException ex) {
-            System.out.println(ex.toString());
-        } finally {
-            if (rs != null) {
-                try {
-                    rs.close();
-                } catch (SQLException ex) {
-                    System.out.println(ex.toString());
-                }
-            }
-            try {
-                db.Close();
-            } catch (SQLException ex) {
-                System.out.println(ex.toString());
-            }
-        }
+        list.add(client);
 
         return list;
     }
-    
-    //Inherits 
+
+    // Inherits
     public boolean updateClient() {
         return update();
     }

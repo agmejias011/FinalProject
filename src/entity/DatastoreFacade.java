@@ -6,6 +6,8 @@
 package entity;
 
 import util.Location;
+
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -54,10 +56,10 @@ public class DatastoreFacade {
         Service service = new Service();
         Tower tower = new Tower();
         tower.setEmail(towerEmail);
-        //List<Tower> listTower = tower.selectTowerByEmail(towerEmail);
-        //if(listTower!=null && listTower.size()>0){
+        // List<Tower> listTower = tower.selectTowerByEmail(towerEmail);
+        // if(listTower!=null && listTower.size()>0){
         list = service.selectServiceByEmail(towerEmail);
-        //}
+        // }
         return list;
     }
 
@@ -77,7 +79,7 @@ public class DatastoreFacade {
         Tower tower = new Tower();
         tower.setEmail(towerEmail);
         List<Tower> listTower = tower.selectTowerByEmail(towerEmail);
-        
+
         if (listTower != null && listTower.size() > 0) {
             hasTower.setTowerId(listTower.get(0).getId());
         }
@@ -111,10 +113,10 @@ public class DatastoreFacade {
         return list;
     }
 
-    /*public boolean requestService(String content, String email, Location location) {
-        Service service = new Service();
-        return service.create(null);
-    }*/
+    /*
+     * public boolean requestService(String content, String email, Location
+     * location) { Service service = new Service(); return service.create(null); }
+     */
     public List<User> selectUserByEmail(String email) {
         List<User> list;
         User user = new User();
@@ -130,10 +132,11 @@ public class DatastoreFacade {
     }
 
     public List<Tower> selectTowerByAddress(String address) {
-        List<Tower> list = null;
+        List<Tower> list = new ArrayList<Tower>();
         List<Tower> listAux;
         Tower tower = new Tower();
         listAux = tower.selectAll();
+
         for (int i = 0; i < listAux.size(); i++) {
             list.add(listAux.get(i));
             for (int j = 0; i < list.size(); i++) {
@@ -217,7 +220,7 @@ public class DatastoreFacade {
     }
 
     public boolean updateTower(Tower tower) {
-       return tower.update();
+        return tower.update();
     }
 
     public Tower getTowerById(Integer id) {
@@ -229,6 +232,5 @@ public class DatastoreFacade {
         Client client = new Client();
         return client.selectById(id);
     }
-
 
 }

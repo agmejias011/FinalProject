@@ -48,44 +48,51 @@ public class Application {
     }
 
     public List<Application> selectByUserTypeId(Integer userTypeId) {
+        // List<Application> list = new ArrayList<Application>();
+        // String sql;
+        // ResultSet rs = null;
+        // Application obj;
+        //
+        // sql = "SELECT a.id, a.name, a.url"
+        // + " FROM application a, has_permission hp"
+        // + " WHERE hp.application_id=a.id AND hp.user_type_id=" + userTypeId;
+        //
+        // //Database db = new Database();
+        // Database db = Database.getInstance();
+        // try {
+        // db.Connect();
+        // db.setStatement();
+        // rs = db.ExecuteQuery(sql);
+        // while (rs.next()) {
+        // obj = new Application();
+        // obj.setId(rs.getString("id") != null ? rs.getInt("id") : null);
+        // obj.setName(rs.getString("name"));
+        // obj.setUrl(rs.getString("url"));
+        // list.add(obj);
+        // }
+        // } catch (SQLException ex) {
+        // System.out.println(ex.toString());
+        // } finally {
+        // if (rs != null) {
+        // try {
+        // rs.close();
+        // } catch (SQLException ex) {
+        // System.out.println(ex.toString());
+        // }
+        // }
+        // try {
+        // db.Close();
+        // } catch (SQLException ex) {
+        // System.out.println(ex.toString());
+        // }
+        // }
+
         List<Application> list = new ArrayList<Application>();
-        String sql;
-        ResultSet rs = null;
-        Application obj;
+        this.id = 25;
+        this.name = "ABC";
+        this.url = "www.url.com";
 
-        sql = "SELECT a.id, a.name, a.url"
-                + " FROM application a, has_permission hp"
-                + " WHERE hp.application_id=a.id AND hp.user_type_id=" + userTypeId;
-
-        //Database db = new Database();
-        Database db = Database.getInstance();
-        try {
-            db.Connect();
-            db.setStatement();
-            rs = db.ExecuteQuery(sql);
-            while (rs.next()) {
-                obj = new Application();
-                obj.setId(rs.getString("id") != null ? rs.getInt("id") : null);
-                obj.setName(rs.getString("name"));
-                obj.setUrl(rs.getString("url"));
-                list.add(obj);
-            }
-        } catch (SQLException ex) {
-            System.out.println(ex.toString());
-        } finally {
-            if (rs != null) {
-                try {
-                    rs.close();
-                } catch (SQLException ex) {
-                    System.out.println(ex.toString());
-                }
-            }
-            try {
-                db.Close();
-            } catch (SQLException ex) {
-                System.out.println(ex.toString());
-            }
-        }
+        list.add(this);
 
         return list;
     }
