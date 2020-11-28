@@ -23,7 +23,7 @@ import entity.Tower;
 import util.Location;
 
 /**
- * @author jorge padilla - patherid 12944432
+ * @author Andres Gonzalez
  * @author Peter J. Clarke Date: 10/28/2020 Purpose: Test cases for the
  *         DatastoreFacade class
  *
@@ -55,9 +55,11 @@ public class DatastoreFacadeTest {
 	}
 
 	/**
-	 * ID: QicFix-DatastoreFacade-002-createClient-001 Purpose: Test if method calls
-	 * client.create() and returns true Preconditions: mock of Client.class, Input:
-	 * datastoreFacade.createClient(clientMock) Expected Output: true
+	 * ID: QicFix-DatastoreFacade-002-createClient-001 
+	 * Purpose: Test if method calls client.create() and returns true
+	 * Preconditions: mock of Client.class, 
+	 * Input: datastoreFacade.createClient(clientMock) 
+	 * Expected Output: true
 	 */
 	@Test
 	public void testCreateClient_001() {
@@ -72,9 +74,11 @@ public class DatastoreFacadeTest {
 	}
 
 	/**
-	 * ID: QicFix-DatastoreFacade-002-createClient-002 Purpose: Test if method calls
-	 * client.create() and returns false Preconditions: mock of Client.class, Input:
-	 * datastoreFacade.createClient(clientMock) Expected Output: true
+	 * ID: QicFix-DatastoreFacade-002-createClient-002
+	 * Purpose: Test if method calls client.create() and returns false 
+	 * Preconditions: mock of Client.class, 
+	 * Input: datastoreFacade.createClient(clientMock)
+	 * datastoreFacade.createClient(clientMock) Expected Output: false
 	 */
 	@Test
 	public void testCreateClient_002() {
@@ -89,9 +93,12 @@ public class DatastoreFacadeTest {
 	}
 
 	/**
-	 * ID: QicFix-DatastoreFacade-006-declineRequest-001 Purpose: Test if request is
-	 * declined Preconditions: Input: serviceId = 1; towerId = 3; Expected output:
-	 * that request is declined Comments: This method is not testable because
+	 * ID: QicFix-DatastoreFacade-006-declineRequest-001 
+	 * Purpose: Test if request is declined
+	 * Preconditions: 
+	 * Input: serviceId = 1; towerId = 3; 
+	 * Expected output: request is declined 
+	 * Comments: This method is not testable because
 	 * DeclineRequest() in DatastoreFacade has a inline declaration of a local
 	 * variable
 	 */
@@ -108,9 +115,12 @@ public class DatastoreFacadeTest {
 	}
 
 	/**
-	 * ID: QicFix-DatastoreFacade-006-declineService-001 Purpose: Test if Service is
-	 * declined Preconditions: Input: none; Expected output: that Service is
-	 * declined
+	 * ID: QicFix-DatastoreFacade-006-declineService-001 
+	 * Purpose: Test if Service is declined 
+	 * Preconditions: 
+	 * Input: String towerEmail = "agonz1123@fiu.edu";
+			  Integer serviceId = 1;
+	 * Expected output: that Service is declined: true
 	 */
 	@Test
 	public void testdeclineService() {
@@ -125,10 +135,11 @@ public class DatastoreFacadeTest {
 	}
 
 	/**
-	 * ID: QicFix-DatastoreFacade-008-selectServiceByTowerEmail-001 Purpose: Test if
-	 * a non empty Service list is returned. Preconditions: A service instance is
-	 * created Input: towerEmail = towerEmail; Expected output: Returns list with
-	 * one service and returns true
+	 * ID: QicFix-DatastoreFacade-008-selectServiceByTowerEmail-001 
+	 * Purpose: Test if a non empty Service list is returned. 
+	 * Preconditions: A service instance is created 
+	 * Input: towerEmail = clarkep@fiu.edu; 
+	 * Expected output: Returns list with one service and returns true
 	 */
 	@Test
 	public void testSelectServiceByTowerEmail001() {
@@ -144,27 +155,19 @@ public class DatastoreFacadeTest {
 		temp.setCost(5.0);
 		temp.setLatitudePickup(65.5);
 		temp.setLongitudePickup(66.6);
-		temp.setLatitudeDestination(85.5);
-		;
-		temp.setLongitudeDestination(86.6);
-		;
-		temp.setStreetAddressPickup("CASE212A");
-		;
-		temp.setCityPickup("Miami");
-		;
-		temp.setStatePickup("FL");
-		;
-		temp.setZipcodePickup("33199");
-		;
-		temp.setStreetAddressDestination("PG6");
-		;
-		temp.setCityDestination("Miami");
-		;
-		temp.setStateDestination("FL");
-		;
+		temp.setLatitudeDestination(85.5);		
+		temp.setLongitudeDestination(86.6);		
+		temp.setStreetAddressPickup("CASE212A");		
+		temp.setCityPickup("Miami");		
+		temp.setStatePickup("FL");		
+		temp.setZipcodePickup("33199");		
+		temp.setStreetAddressDestination("PG6");		
+		temp.setCityDestination("Miami");		
+		temp.setStateDestination("FL");		
 		temp.setZipcodeDestination("33199");
 		temp.setClientDescription("student");
 		temp.setTowerDescription("tall");
+		
 		// Test input
 		myServiceList = datastoreFacade.selectServiceByTowerEmail("clarkep@fiu.edu");
 		// Test output
@@ -173,10 +176,11 @@ public class DatastoreFacadeTest {
 	}
 
 	/**
-	 * ID: QicFix-DatastoreFacade-008-selectServiceByTowerEmail-001 Purpose: Test if
-	 * a non empty Service list is returned. Preconditions: A service instance is
-	 * created Input: towerEmail = towerEmail; Expected output: Returns list with
-	 * one service and return false
+	 * ID: QicFix-DatastoreFacade-008-selectServiceByTowerEmail-001 
+	 * Purpose: Test if a non empty Service list is returned. 
+	 * Preconditions: A service instance is created 
+	 * Input: towerEmail = clarkep@fiu.edu; 
+	 * Expected output: Returns list with one service and return false
 	 */
 	@Test
 	public void testSelectServiceByTowerEmail002() {
@@ -193,23 +197,14 @@ public class DatastoreFacadeTest {
 		temp.setLatitudePickup(65.5);
 		temp.setLongitudePickup(66.6);
 		temp.setLatitudeDestination(85.5);
-		;
 		temp.setLongitudeDestination(86.6);
-		;
 		temp.setStreetAddressPickup("CASE212A");
-		;
 		temp.setCityPickup("Miami");
-		;
 		temp.setStatePickup("FL");
-		;
 		temp.setZipcodePickup("33199");
-		;
 		temp.setStreetAddressDestination("PG6");
-		;
 		temp.setCityDestination("Miami");
-		;
 		temp.setStateDestination("FL");
-		;
 		temp.setZipcodeDestination("33199");
 		temp.setClientDescription("student");
 		temp.setTowerDescription("tall");
@@ -221,10 +216,11 @@ public class DatastoreFacadeTest {
 	}
 
 	/**
-	 * ID: QicFix-DatastoreFacade-008-selectClientByEmail-001 Purpose: Test if non
-	 * empty client list is returned Preconditions: A client instance is created
-	 * Input: String email = "agonz1123@fiu.edu"; Expected output: Returns list with
-	 * one client and returns true
+	 * ID: QicFix-DatastoreFacade-008-selectClientByEmail-001 
+	 * Purpose: Test if non empty client list is returned 
+	 * Preconditions: A client instance is created
+	 * Input: String email = "agonz1123@fiu.edu"; 
+	 * Expected output: Returns list with one client and returns true
 	 */
 	@Test
 	public void testselectClientByEmail001() {
@@ -254,10 +250,11 @@ public class DatastoreFacadeTest {
 	}
 
 	/**
-	 * ID: QicFix-DatastoreFacade-008-selectClientByEmail-002 Purpose: Test if non
-	 * empty client list is returned Preconditions: A client instance is created
-	 * Input: String email = "agonz1123@fiu.edu"; Expected output: Returns list with
-	 * one client and returns false
+	 * ID: QicFix-DatastoreFacade-008-selectClientByEmail-002 
+	 * Purpose: Test if non empty client list is returned 
+	 * Preconditions: A client instance is created
+	 * Input: String email = "agonz1123@fiu.edu"; 
+	 * Expected output: Returns list with one client and returns false
 	 */
 	@Test
 	public void testselectClientByEmail002() {
@@ -285,10 +282,11 @@ public class DatastoreFacadeTest {
 	}
 
 	/**
-	 * ID: QicFix-DatastoreFacade-008-selectTowerByAddress-001 Purpose: Test if non
-	 * empty tower list is returned Preconditions: A tower instance is created
-	 * Input: String address = "520 w 5 st"; Expected output: Returns list with one
-	 * client and returns true
+	 * ID: QicFix-DatastoreFacade-008-selectTowerByAddress-001 
+	 * Purpose: Test if non empty tower list is returned 
+	 * Preconditions: A tower instance is created
+	 * Input: String address = "520 w 5 st"; 
+	 * Expected output: Returns list with one client and returns true
 	 */
 	@Test
 	public void testselectTowerByAddress001() {
@@ -323,10 +321,11 @@ public class DatastoreFacadeTest {
 	}
 
 	/**
-	 * ID: QicFix-DatastoreFacade-008-selectTowerByAddress-002 Purpose: Test if non
-	 * empty tower list is returned Preconditions: A tower instance is created
-	 * Input: String address = "520 w 5 st"; Expected output: Returns list with one
-	 * client and returns false
+	 * ID: QicFix-DatastoreFacade-008-selectTowerByAddress-002 
+	 * Purpose: Test if non empty tower list is returned 
+	 * Preconditions: A tower instance is created
+	 * Input: String address = "520 w 5 st"; 
+	 * Expected output: Returns list with one client and returns false
 	 */
 	@Test
 	public void testselectTowerByAddress002() {
@@ -361,11 +360,12 @@ public class DatastoreFacadeTest {
 	}
 
 	/**
-	 * ID: QicFix-DatastoreFacade-008-selectTowerByAddress00101 Purpose: Test if non
-	 * empty tower list is returned Preconditions: A tower instance is created, a
-	 * location instance is created Input: Location loc = new Location(2.2, 2.3);
-	 * String city = "Miami"; String state = "FL"; Expected output: Returns list
-	 * with one client and returns true
+	 * ID: QicFix-DatastoreFacade-008-selectTowerByAddress00101 
+	 * Purpose: Test if non empty tower list is returned 
+	 * Preconditions: A tower instance is created, a location instance is created 
+	 * Input: Location loc = new Location(2.2, 2.3);
+	 * 		  String city = "Miami"; String state = "FL"; 
+	 * Expected output: Returns list with one client and returns true
 	 */
 	@Test
 	public void testselectTowerByAddress00101() {
@@ -402,11 +402,12 @@ public class DatastoreFacadeTest {
 	}
 
 	/**
-	 * ID: QicFix-DatastoreFacade-008-selectTowerByAddress00102 Purpose: Test if non
-	 * empty tower list is returned Preconditions: A tower instance is created, a
-	 * location instance is created Input: Location loc = new Location(2.2, 2.3);
-	 * String city = "Miami"; String state = "FL"; Expected output: Returns list
-	 * with one client and returns false
+	 * ID: QicFix-DatastoreFacade-008-selectTowerByAddress00102 
+	 * Purpose: Test if non empty tower list is returned 
+	 * Preconditions: A tower instance is created, a location instance is created 
+	 * Input: Location loc = new Location(2.2, 2.3);
+	 * 		  String city = "Miami"; String state = "FL"; 
+	 * Expected output: Returns list with one client and returns false
 	 */
 	@Test
 	public void testselectTowerByAddress00102() {
@@ -443,10 +444,11 @@ public class DatastoreFacadeTest {
 	}
 
 	/**
-	 * ID: QicFix-DatastoreFacade-008-selectTowerByRating-001 Purpose: Test if non
-	 * empty tower list is returned Preconditions: A tower instance is created
-	 * Input: String city = "Miami"; String state = "FL"; Expected output: Returns
-	 * list with one client and returns true
+	 * ID: QicFix-DatastoreFacade-008-selectTowerByRating-001 
+	 * Purpose: Test if non empty tower list is returned 
+	 * Preconditions: A tower instance is created
+	 * Input: String city = "Miami"; String state = "FL";
+	 * Expected output: Returns list with one client and returns true
 	 */
 	@Test
 	public void testselectTowerByRating001() {
@@ -483,10 +485,12 @@ public class DatastoreFacadeTest {
 	}
 
 	/**
-	 * ID: QicFix-DatastoreFacade-008-selectTowerByRating-002 Purpose: Test if non
-	 * empty tower list is returned Preconditions: A tower instance is created
-	 * Input: String city = "Miami"; String state = "FL"; Expected output: Returns
-	 * list with one client and returns false
+	 * ID: QicFix-DatastoreFacade-008-selectTowerByRating-002 
+	 * Purpose: Test if non empty tower list is returned 
+	 * Preconditions: A tower instance is created
+	 * Input: String city = "Miami";
+	 * 		  String state = "FL"; 
+	 * Expected output: Returns list with one client and returns false
 	 */
 	@Test
 	public void testselectTowerByRating002() {
@@ -523,10 +527,12 @@ public class DatastoreFacadeTest {
 	}
 
 	/**
-	 * ID: QicFix-DatastoreFacade-008-selectTowerByPrice-001 Purpose: Test if non
-	 * empty tower list is returned Preconditions: A tower instance is created
-	 * Input: String city = "Miami"; String state = "FL"; Expected output: Returns
-	 * list with one client and returns true
+	 * ID: QicFix-DatastoreFacade-008-selectTowerByPrice-001 
+	 * Purpose: Test if non empty tower list is returned 
+	 * Preconditions: A tower instance is created
+	 * Input: String city = "Miami"; 
+	 * 		  String state = "FL"; 
+	 * Expected output: Returns list with one client and returns true
 	 */
 	@Test
 	public void testselectTowerByPrice001() {
@@ -563,10 +569,12 @@ public class DatastoreFacadeTest {
 	}
 
 	/**
-	 * ID: QicFix-DatastoreFacade-008-selectTowerByPrice-002 Purpose: Test if non
-	 * empty tower list is returned Preconditions: A tower instance is created
-	 * Input: String city = "Miami"; String state = "FL"; Expected output: Returns
-	 * list with one client and returns false
+	 * ID: QicFix-DatastoreFacade-008-selectTowerByPrice-002 
+	 * Purpose: Test if non empty tower list is returned 
+	 * Preconditions: A tower instance is created
+	 * Input: String city = "Miami"; 
+	 * 		  String state = "FL"; 
+	 * Expected output: Returns list with one client and returns false
 	 */
 	@Test
 	public void testselectTowerByPrice002() {
@@ -603,9 +611,11 @@ public class DatastoreFacadeTest {
 	}
 
 	/**
-	 * ID: QicFix-DatastoreFacade-008-updateClient-001 Purpose: Test if update
-	 * client returns true or false Preconditions: A client instance is created
-	 * Input: client instance Expected output: Returns true if the client is updated
+	 * ID: QicFix-DatastoreFacade-008-updateClient-001
+	 * Purpose: Test if client is updated
+	 * Preconditions: A client instance is created
+	 * Input: Client instance
+	 * Expected output: Returns true if the client is updated
 	 */
 	@Test
 	public void testupdateClient001() {
@@ -636,10 +646,12 @@ public class DatastoreFacadeTest {
 	}
 
 	/**
-	 * ID: QicFix-DatastoreFacade-008-updateClient-002 Purpose: Test if update
-	 * client returns true or false Preconditions: A client instance is created
-	 * Input: client instance Expected output: Returns false if the client is
-	 * updated
+	 * ID: QicFix-DatastoreFacade-008-updateClient-002 
+	 * Purpose: Test if client is not updated
+	 * Preconditions: A client instance is created
+	 * Input: Client instance
+	 * Input: client instance 
+	 * Expected output: Returns false if the client is not updated
 	 */
 	@Test
 	public void testupdateClient002() {
@@ -671,10 +683,11 @@ public class DatastoreFacadeTest {
 	}
 
 	/**
-	 * ID: QicFix-DatastoreFacade-008-selectApplication-001 Purpose: Test if non
-	 * empty list of application is returned Preconditions: An application instance
-	 * is created Input: Integer userTypeId = 6; Expected output: Returns list with
-	 * one application and returns true
+	 * ID: QicFix-DatastoreFacade-008-selectApplication-001 
+	 * Purpose: Test if non empty list of application is returned 
+	 * Preconditions: An application instance is created 
+	 * Input: Integer userTypeId = 6; 
+	 * Expected output: Returns list with one application and returns true
 	 */
 	@Test
 	public void tesselectApplication001() {
@@ -696,10 +709,11 @@ public class DatastoreFacadeTest {
 	}
 
 	/**
-	 * ID: QicFix-DatastoreFacade-008-selectApplication-002 Purpose: Test if non
-	 * empty list of application is returned Preconditions: An application instance
-	 * is created Input: Integer userTypeId = 6; Expected output: Returns list with
-	 * one application and returns false
+	 * ID: QicFix-DatastoreFacade-008-selectApplication-002 
+	 * Purpose: Test if non empty list of application is returned 
+	 * Preconditions: An application instance is created 
+	 * Input: Integer userTypeId = 6; 
+	 * Expected output: Returns list with one application and returns false
 	 */
 	@Test
 	public void tesselectApplication002() {
@@ -721,10 +735,11 @@ public class DatastoreFacadeTest {
 	}
 
 	/**
-	 * ID: QicFix-DatastoreFacade-008-selectUserByClientEmail-001 Purpose: Test if a
-	 * non empty Service list is returned. Preconditions: A service instance is
-	 * created Input: String email = "clarkep@fiu.edu" Expected output: Returns list
-	 * with one service and returns true
+	 * ID: QicFix-DatastoreFacade-008-selectUserByClientEmail-001 
+	 * Purpose: Test if a non empty Service list is returned. 
+	 * Preconditions: A service instance is created 
+	 * Input: String email = "clarkep@fiu.edu" 
+	 * Expected output: Returns list with one service and returns true
 	 */
 	@Test
 	public void testselectUserByClientEmail001() {
@@ -741,23 +756,14 @@ public class DatastoreFacadeTest {
 		temp.setLatitudePickup(65.5);
 		temp.setLongitudePickup(66.6);
 		temp.setLatitudeDestination(85.5);
-		;
 		temp.setLongitudeDestination(86.6);
-		;
 		temp.setStreetAddressPickup("CASE212A");
-		;
 		temp.setCityPickup("Miami");
-		;
 		temp.setStatePickup("FL");
-		;
 		temp.setZipcodePickup("33199");
-		;
 		temp.setStreetAddressDestination("PG6");
-		;
 		temp.setCityDestination("Miami");
-		;
 		temp.setStateDestination("FL");
-		;
 		temp.setZipcodeDestination("33199");
 		temp.setClientDescription("student");
 		temp.setTowerDescription("tall");
@@ -770,10 +776,11 @@ public class DatastoreFacadeTest {
 	}
 
 	/**
-	 * ID: QicFix-DatastoreFacade-008-selectUserByClientEmail-002 Purpose: Test if a
-	 * non empty Service list is returned. Preconditions: A service instance is
-	 * created Input: String email = "clarkep@fiu.edu" Expected output: Returns list
-	 * with one service and returns false
+	 * ID: QicFix-DatastoreFacade-008-selectUserByClientEmail-002 
+	 * Purpose: Test if a non empty Service list is returned. 
+	 * Preconditions: A service instance is created 
+	 * Input: String email = "clarkep@fiu.edu"
+	 * Expected output: Returns list with one service and returns false
 	 */
 	@Test
 	public void testselectUserByClientEmail002() {
@@ -790,23 +797,14 @@ public class DatastoreFacadeTest {
 		temp.setLatitudePickup(65.5);
 		temp.setLongitudePickup(66.6);
 		temp.setLatitudeDestination(85.5);
-		;
 		temp.setLongitudeDestination(86.6);
-		;
 		temp.setStreetAddressPickup("CASE212A");
-		;
 		temp.setCityPickup("Miami");
-		;
 		temp.setStatePickup("FL");
-		;
 		temp.setZipcodePickup("33199");
-		;
 		temp.setStreetAddressDestination("PG6");
-		;
 		temp.setCityDestination("Miami");
-		;
 		temp.setStateDestination("FL");
-		;
 		temp.setZipcodeDestination("33199");
 		temp.setClientDescription("student");
 		temp.setTowerDescription("tall");
@@ -819,10 +817,12 @@ public class DatastoreFacadeTest {
 	}
 
 	/**
-	 * ID: QicFix-DatastoreFacade-008-block-001 Purpose: Test if user is blocked
-	 * Preconditions: A user instance is created Input: user instance Expected
-	 * output: Returns true if the client is updated Comment: non testable method,
-	 * it is void
+	 * ID: QicFix-DatastoreFacade-008-block-001 
+	 * Purpose: Test if user is blocked
+	 * Preconditions: A user instance is created 
+	 * Input: user instance 
+	 * Expected output: Returns true if the client is updated 
+	 * Comment: non testable method, it is void
 	 */
 	@Test
 	public void testblock001() {
@@ -851,9 +851,12 @@ public class DatastoreFacadeTest {
 	}
 
 	/**
-	 * ID: QicFix-DatastoreFacade-006-updatePickup-001 Purpose: Test if pickup is
-	 * updated Preconditions: none Input: String address = "563 W 25th St"; Integer
-	 * serviceId = 6; Expected output: that pickup is updated
+	 * ID: QicFix-DatastoreFacade-006-updatePickup-001 
+	 * Purpose: Test if pickup is updated 
+	 * Preconditions: none 
+	 * Input: String address = "563 W 25th St"; 
+	 * Integer serviceId = 6; 
+	 * Expected output: that pickup is updated
 	 */
 	@Test
 	public void testupdatePickup() {

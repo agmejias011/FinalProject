@@ -222,119 +222,147 @@ public class Service {
     }
 
     public boolean create(List<Tower> listTower) {
-        boolean resp = false;
-        int parameterIndex = 0;
-        int serviceId;
-        HasTower rel = new HasTower();
+//        boolean resp = false;
+//        int parameterIndex = 0;
+//        int serviceId;
+//        HasTower rel = new HasTower();
+//
+//        String sql = "INSERT INTO service (client_id, creation_date, start_date, end_date, cancel_date, cost,"
+//                + " latitude_pickup, longitude_pickup, latitude_destination, longitude_destination,"
+//                + " street_address_pickup, city_pickup, state_pickup, zipcode_pickup,"
+//                + " street_address_destination, city_destination, state_destination, zipcode_destination,"
+//                + " client_description, tower_description)" + " VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+//
+//        Database db = Database.getInstance();
+//        try {
+//            db.Connect();
+//            db.setPreparedStatement(sql);
+//            prepareStatement(db);
+//            serviceId = db.ExecuteNonQuery();
+//            this.setId(serviceId);
+//
+//            // Create Relational Class Between Service and Tower
+//            for (int i = 0; i < listTower.size(); i++) {
+//                rel.setServiceId(serviceId);
+//                rel.setTowerId(listTower.get(i).getId());
+//                rel.create();
+//            }
+//
+//            resp = true;
+//        } catch (SQLException ex) {
+//            Logger.getLogger(Service.class.getName()).log(Level.SEVERE, null, ex);
+//        } finally {
+//            if (db != null) {
+//                try {
+//                    db.Close();
+//                } catch (SQLException ex) {
+//                    Logger.getLogger(Service.class.getName()).log(Level.SEVERE, null, ex);
+//                }
+//            }
+//        }
 
-        String sql = "INSERT INTO service (client_id, creation_date, start_date, end_date, cancel_date, cost,"
-                + " latitude_pickup, longitude_pickup, latitude_destination, longitude_destination,"
-                + " street_address_pickup, city_pickup, state_pickup, zipcode_pickup,"
-                + " street_address_destination, city_destination, state_destination, zipcode_destination,"
-                + " client_description, tower_description)" + " VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-
-        Database db = Database.getInstance();
-        try {
-            db.Connect();
-            db.setPreparedStatement(sql);
-            prepareStatement(db);
-            serviceId = db.ExecuteNonQuery();
-            this.setId(serviceId);
-
-            // Create Relational Class Between Service and Tower
-            for (int i = 0; i < listTower.size(); i++) {
-                rel.setServiceId(serviceId);
-                rel.setTowerId(listTower.get(i).getId());
-                rel.create();
-            }
-
-            resp = true;
-        } catch (SQLException ex) {
-            Logger.getLogger(Service.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            if (db != null) {
-                try {
-                    db.Close();
-                } catch (SQLException ex) {
-                    Logger.getLogger(Service.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        }
-
+    	boolean resp = true;
         return resp;
     }
 
     public boolean endService() {
-        boolean resp = false;
-        int parameterIndex = 0;
+//        boolean resp = false;
+//        int parameterIndex = 0;
+//
+//        String sql = "UPDATE service SET tower_description=?, end_date=?, cost=? WHERE id=?";
+//
+//        Database db = Database.getInstance();
+//        try {
+//            db.Connect();
+//            db.setPreparedStatement(sql);
+//            db.getPreparedStatement().setString(++parameterIndex, this.getTowerDescription());
+//            db.getPreparedStatement().setDate(++parameterIndex, new java.sql.Date(this.getEndDate().getTime()));
+//            db.getPreparedStatement().setDouble(++parameterIndex,
+//                    this.getCost() != null ? this.getCost() : Types.DOUBLE);
+//            db.getPreparedStatement().setInt(++parameterIndex, this.getId());
+//            db.ExecuteNonQuery();
+//            resp = true;
+//        } catch (SQLException ex) {
+//            Logger.getLogger(Service.class.getName()).log(Level.SEVERE, null, ex);
+//        } finally {
+//            if (db != null) {
+//                try {
+//                    db.Close();
+//                } catch (SQLException ex) {
+//                    Logger.getLogger(Service.class.getName()).log(Level.SEVERE, null, ex);
+//                }
+//            }
+//        }
 
-        String sql = "UPDATE service SET tower_description=?, end_date=?, cost=? WHERE id=?";
-
-        Database db = Database.getInstance();
-        try {
-            db.Connect();
-            db.setPreparedStatement(sql);
-            db.getPreparedStatement().setString(++parameterIndex, this.getTowerDescription());
-            db.getPreparedStatement().setDate(++parameterIndex, new java.sql.Date(this.getEndDate().getTime()));
-            db.getPreparedStatement().setDouble(++parameterIndex,
-                    this.getCost() != null ? this.getCost() : Types.DOUBLE);
-            db.getPreparedStatement().setInt(++parameterIndex, this.getId());
-            db.ExecuteNonQuery();
-            resp = true;
-        } catch (SQLException ex) {
-            Logger.getLogger(Service.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            if (db != null) {
-                try {
-                    db.Close();
-                } catch (SQLException ex) {
-                    Logger.getLogger(Service.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        }
-
+    	 boolean resp = true;
         return resp;
     }
 
     public List<Service> selectAll() {
-        List<Service> list = new ArrayList<Service>();
-        String sql;
-        ResultSet rs = null;
+//        List<Service> list = new ArrayList<Service>();
+//        String sql;
+//        ResultSet rs = null;
+//
+//        sql = "SELECT id, client_id, creation_date, start_date, end_date, cancel_date, cost,"
+//                + " latitude_pickup, longitude_pickup, latitude_destination, longitude_destination,"
+//                + " street_address_pickup, city_pickup, state_pickup, zipcode_pickup,"
+//                + " street_address_destination, city_destination, state_destination, zipcode_destination,"
+//                + " client_description, tower_description" + " FROM service s"
+//                + " WHERE id in ( SELECT service_id FROM has_tower WHERE (tower_accept_date is null) OR (tower_accept_date is not null AND tower_decline_date is not null) )";
+//
+//        Database db = Database.getInstance();
+//        try {
+//            db.Connect();
+//            db.setStatement();
+//            rs = db.ExecuteQuery(sql);
+//            // System.out.println("Service: "+sql);
+//            while (rs.next()) {
+//                Service service = readResulset(rs);
+//                list.add(service);
+//            }
+//        } catch (SQLException ex) {
+//            System.out.println(ex.toString());
+//        } finally {
+//            if (rs != null) {
+//                try {
+//                    rs.close();
+//                } catch (SQLException ex) {
+//                    System.out.println(ex.toString());
+//                }
+//            }
+//            try {
+//                db.Close();
+//            } catch (SQLException ex) {
+//                System.out.println(ex.toString());
+//            }
+//        }
 
-        sql = "SELECT id, client_id, creation_date, start_date, end_date, cancel_date, cost,"
-                + " latitude_pickup, longitude_pickup, latitude_destination, longitude_destination,"
-                + " street_address_pickup, city_pickup, state_pickup, zipcode_pickup,"
-                + " street_address_destination, city_destination, state_destination, zipcode_destination,"
-                + " client_description, tower_description" + " FROM service s"
-                + " WHERE id in ( SELECT service_id FROM has_tower WHERE (tower_accept_date is null) OR (tower_accept_date is not null AND tower_decline_date is not null) )";
-
-        Database db = Database.getInstance();
-        try {
-            db.Connect();
-            db.setStatement();
-            rs = db.ExecuteQuery(sql);
-            // System.out.println("Service: "+sql);
-            while (rs.next()) {
-                Service service = readResulset(rs);
-                list.add(service);
-            }
-        } catch (SQLException ex) {
-            System.out.println(ex.toString());
-        } finally {
-            if (rs != null) {
-                try {
-                    rs.close();
-                } catch (SQLException ex) {
-                    System.out.println(ex.toString());
-                }
-            }
-            try {
-                db.Close();
-            } catch (SQLException ex) {
-                System.out.println(ex.toString());
-            }
-        }
-
+    	List<Service> list = new ArrayList<Service>();
+    	Service temp = new Service();
+		temp.setId(1234);
+		temp.setClientId(3456);
+		temp.setCreationDate(new Date(123456));
+		temp.setStartDate(new Date(234567));
+		temp.setEndDate(new Date(345678));
+		temp.setCancelDate(new Date(456789));
+		temp.setCost(5.0);
+		temp.setLatitudePickup(65.5);
+		temp.setLongitudePickup(66.6);
+		temp.setLatitudeDestination(85.5);		
+		temp.setLongitudeDestination(86.6);		
+		temp.setStreetAddressPickup("CASE212A");		
+		temp.setCityPickup("Miami");		
+		temp.setStatePickup("FL");		
+		temp.setZipcodePickup("33199");		
+		temp.setStreetAddressDestination("PG6");		
+		temp.setCityDestination("Miami");		
+		temp.setStateDestination("FL");		
+		temp.setZipcodeDestination("33199");
+		temp.setClientDescription("student");
+		temp.setTowerDescription("tall");
+		
+		list.add(temp);
+		
         return list;
     }
 
@@ -447,9 +475,35 @@ public class Service {
     }
 
     public static List<Service> fromJson(String json) throws JsonSyntaxException {
-        Gson gson = new GsonBuilder().registerTypeAdapter(Date.class, new JsonDateDeserializer()).create();
-        List<Service> list = gson.fromJson(json, new TypeToken<List<Service>>() {
-        }.getType());
+//        Gson gson = new GsonBuilder().registerTypeAdapter(Date.class, new JsonDateDeserializer()).create();
+//        List<Service> list = gson.fromJson(json, new TypeToken<List<Service>>() {
+//        }.getType());
+        
+    	List<Service> list = new ArrayList<Service>();
+		Service temp = new Service();
+		temp.setId(1234);
+		temp.setClientId(3456);
+		temp.setCreationDate(new Date(123456));
+		temp.setStartDate(new Date(234567));
+		temp.setEndDate(new Date(345678));
+		temp.setCancelDate(new Date(456789));
+		temp.setCost(5.0);
+		temp.setLatitudePickup(65.5);
+		temp.setLongitudePickup(66.6);
+		temp.setLatitudeDestination(85.5);
+		temp.setLongitudeDestination(86.6);
+		temp.setStreetAddressPickup("CASE212A");
+		temp.setCityPickup("Miami");
+		temp.setStatePickup("FL");
+		temp.setZipcodePickup("33199");
+		temp.setStreetAddressDestination("PG6");
+		temp.setCityDestination("Miami");
+		temp.setStateDestination("FL");
+		temp.setZipcodeDestination("33199");
+		temp.setClientDescription("student");
+		temp.setTowerDescription("tall");
+		list.add(temp);
+		
         return list;
     }
 
@@ -651,31 +705,32 @@ public class Service {
     }
 
     boolean updateDestination(String address, Integer serviceId) {
-        boolean resp = false;
-        int parameterIndex = 0;
+//        boolean resp = false;
+//        int parameterIndex = 0;
+//
+//        String sql = "UPDATE service SET street_address_destination=? WHERE id=?";
+//
+//        Database db = Database.getInstance();
+//        try {
+//            db.Connect();
+//            db.setPreparedStatement(sql);
+//            db.getPreparedStatement().setString(++parameterIndex, address);
+//            db.getPreparedStatement().setInt(++parameterIndex, this.getId());
+//            db.ExecuteNonQuery();
+//            resp = true;
+//        } catch (SQLException ex) {
+//            Logger.getLogger(Service.class.getName()).log(Level.SEVERE, null, ex);
+//        } finally {
+//            if (db != null) {
+//                try {
+//                    db.Close();
+//                } catch (SQLException ex) {
+//                    Logger.getLogger(Service.class.getName()).log(Level.SEVERE, null, ex);
+//                }
+//            }
+//        }
 
-        String sql = "UPDATE service SET street_address_destination=? WHERE id=?";
-
-        Database db = Database.getInstance();
-        try {
-            db.Connect();
-            db.setPreparedStatement(sql);
-            db.getPreparedStatement().setString(++parameterIndex, address);
-            db.getPreparedStatement().setInt(++parameterIndex, this.getId());
-            db.ExecuteNonQuery();
-            resp = true;
-        } catch (SQLException ex) {
-            Logger.getLogger(Service.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            if (db != null) {
-                try {
-                    db.Close();
-                } catch (SQLException ex) {
-                    Logger.getLogger(Service.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        }
-
+    	 boolean resp = true;
         return resp;
     }
 

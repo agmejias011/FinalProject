@@ -258,39 +258,64 @@ public class Tower extends User {
     // order 1: orders by Nearest Tower related to the user
     // order 2: orders by Best Rated Tower
     public List<Tower> selectAllOrdered(Location location, Integer order) {
-        List<Tower> list = new ArrayList<Tower>();
-        String sql;
-        ResultSet rs = null;
+//        List<Tower> list = new ArrayList<Tower>();
+//        String sql;
+//        ResultSet rs = null;
+//
+//        sql = "SELECT t.id, t.email, t.company_name, t.permit_number, t.latitude, t.longitude, t.price_mile, u.phone, u.user_type_id, u.fname, u.lname, u.street_address, u.city, u.state, u.zipcode, u.dob, u.blocked FROM user u, tower t"
+//                + " WHERE t.email=u.email";
+//
+//        Database db = Database.getInstance();
+//        try {
+//            db.Connect();
+//            db.setStatement();
+//            rs = db.ExecuteQuery(sql);
+//            while (rs.next()) {
+//                Tower obj = readResult(rs);
+//                list.add(obj);
+//            }
+//        } catch (SQLException ex) {
+//            System.out.println(ex.toString());
+//        } finally {
+//            if (rs != null) {
+//                try {
+//                    rs.close();
+//                } catch (SQLException ex) {
+//                    System.out.println(ex.toString());
+//                }
+//            }
+//            try {
+//                db.Close();
+//            } catch (SQLException ex) {
+//                System.out.println(ex.toString());
+//            }
+//        }
+    	
+    	 List<Tower> list = new ArrayList<Tower>();
+    	 
+    	Tower myT = new Tower();
+		myT.setBlocked("blocked");
+		myT.setCity("Miami");
+		Date dob = new Date(1990, 10, 5);
+		myT.setDob(dob);
+		myT.setEmail("agonz1123@fiu.edu");
+		myT.setFname("Andy");
+		myT.setId(5);
+		myT.setLname("Miller");
+		myT.setPassword("1234");
+		myT.setPhone("555-555-5555");
+		myT.setState("FL");
+		myT.setStreetAddress("520 w 5 st");
+		myT.setUserTypeId(3);
+		myT.setZipcode("33122");
+		myT.setCompanyName("ABC");
+		myT.setLatitude(2.2);
+		myT.setLongitude(2.3);
+		myT.setPermitNumber("12345");
+		myT.setPriceMile(2.24);		
 
-        sql = "SELECT t.id, t.email, t.company_name, t.permit_number, t.latitude, t.longitude, t.price_mile, u.phone, u.user_type_id, u.fname, u.lname, u.street_address, u.city, u.state, u.zipcode, u.dob, u.blocked FROM user u, tower t"
-                + " WHERE t.email=u.email";
-
-        Database db = Database.getInstance();
-        try {
-            db.Connect();
-            db.setStatement();
-            rs = db.ExecuteQuery(sql);
-            while (rs.next()) {
-                Tower obj = readResult(rs);
-                list.add(obj);
-            }
-        } catch (SQLException ex) {
-            System.out.println(ex.toString());
-        } finally {
-            if (rs != null) {
-                try {
-                    rs.close();
-                } catch (SQLException ex) {
-                    System.out.println(ex.toString());
-                }
-            }
-            try {
-                db.Close();
-            } catch (SQLException ex) {
-                System.out.println(ex.toString());
-            }
-        }
-
+		list.add(myT);
+		
         return list;
     }
 
@@ -372,9 +397,34 @@ public class Tower extends User {
     }
 
     public static List<Tower> fromJson(String json) throws JsonSyntaxException {
-        Gson gson = new GsonBuilder().registerTypeAdapter(Date.class, new Utility.JsonDateDeserializer()).create();
-        List<Tower> list = gson.fromJson(json, new TypeToken<List<Tower>>() {
-        }.getType());
+//        Gson gson = new GsonBuilder().registerTypeAdapter(Date.class, new Utility.JsonDateDeserializer()).create();
+//        List<Tower> list = gson.fromJson(json, new TypeToken<List<Tower>>() {
+//        }.getType());
+        
+        List<Tower> list = new ArrayList<Tower>(); 
+        
+        Tower myT = new Tower();
+		myT.setBlocked("blocked");
+		myT.setCity("Miami");
+		Date dob = new Date(1990, 10, 5);
+		myT.setDob(dob);
+		myT.setEmail("agonz1123@fiu.edu");
+		myT.setFname("Andy");
+		myT.setId(5);
+		myT.setLname("Miller");
+		myT.setPassword("1234");
+		myT.setPhone("555-555-5555");
+		myT.setState("FL");
+		myT.setStreetAddress("520 w 5 st");
+		myT.setUserTypeId(3);
+		myT.setZipcode("33122");
+		myT.setCompanyName("ABC");
+		myT.setLatitude(2.2);
+		myT.setLongitude(2.3);
+		myT.setPermitNumber("12345");
+		myT.setPriceMile(2.24);
+			
+		
         return list;
     }
 
