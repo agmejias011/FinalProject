@@ -859,9 +859,29 @@ public class DatastoreFacadeTest {
 	 * Expected output: that pickup is updated
 	 */
 	@Test
-	public void testupdatePickup() {
+	public void testupdatePickup_001() {
 		String address = "563 W 25th St";
 		Integer serviceId = 6;
+
+		// Test Setup:
+		// Test Input:
+		boolean returnVal = datastoreFacade.updatePickup(address, serviceId);
+		// Expected Output
+		assertTrue(returnVal);
+	}
+	
+	/**
+	 * ID: QicFix-DatastoreFacade-006-updatePickup-002
+	 * Purpose: Test if pickup is updated 
+	 * Preconditions: none 
+	 * Input: String address = "2653 SW 12th St"; 
+	 * Integer serviceId = 1; 
+	 * Expected output: that pickup is updated
+	 */
+	@Test
+	public void testupdatePickup_002() {
+		String address = "2653 SW 12th St";
+		Integer serviceId = 1;
 
 		// Test Setup:
 		// Test Input:
