@@ -81,37 +81,38 @@ public class Payment {
 
     public boolean makePayment(Double amount, Integer serviceId) {
 
-        boolean resp = false;
-        int parameterIndex = 0;
-        this.setIdservice(serviceId);
-        this.setAmount(amount);
+//        boolean resp = false;
+//        int parameterIndex = 0;
+//        this.setIdservice(serviceId);
+//        this.setAmount(amount);
+//
+//        String sql = "INSERT INTO payment (service_id, date, amount, credit_card_last, paypal_auto)"
+//                + " VALUES (?,?,?,?,?)";
+//
+//        Database db = new Database();
+//        try {
+//            db.Connect();
+//            db.setPreparedStatement(sql);
+//            db.getPreparedStatement().setInt(++parameterIndex, this.getIdservice());
+//            db.getPreparedStatement().setDate(++parameterIndex, new java.sql.Date(this.getDate().getTime()));
+//            db.getPreparedStatement().setDouble(++parameterIndex, this.getAmount()!=null?this.getAmount():Types.DOUBLE);
+//            db.getPreparedStatement().setString(++parameterIndex, this.getCreditCardLast());
+//            db.getPreparedStatement().setString(++parameterIndex, this.getPaypalAuto());
+//            db.ExecuteNonQuery();
+//            resp = true;
+//        } catch (SQLException ex) {
+//            Logger.getLogger(Payment.class.getName()).log(Level.SEVERE, null, ex);
+//        } finally {
+//            if (db != null) {
+//                try {
+//                    db.Close();
+//                } catch (SQLException ex) {
+//                    Logger.getLogger(Payment.class.getName()).log(Level.SEVERE, null, ex);
+//                }
+//            }
+//        }
 
-        String sql = "INSERT INTO payment (service_id, date, amount, credit_card_last, paypal_auto)"
-                + " VALUES (?,?,?,?,?)";
-
-        Database db = new Database();
-        try {
-            db.Connect();
-            db.setPreparedStatement(sql);
-            db.getPreparedStatement().setInt(++parameterIndex, this.getIdservice());
-            db.getPreparedStatement().setDate(++parameterIndex, new java.sql.Date(this.getDate().getTime()));
-            db.getPreparedStatement().setDouble(++parameterIndex, this.getAmount()!=null?this.getAmount():Types.DOUBLE);
-            db.getPreparedStatement().setString(++parameterIndex, this.getCreditCardLast());
-            db.getPreparedStatement().setString(++parameterIndex, this.getPaypalAuto());
-            db.ExecuteNonQuery();
-            resp = true;
-        } catch (SQLException ex) {
-            Logger.getLogger(Payment.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            if (db != null) {
-                try {
-                    db.Close();
-                } catch (SQLException ex) {
-                    Logger.getLogger(Payment.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        }
-
+    	 boolean resp = true;
         return resp;
     }
   

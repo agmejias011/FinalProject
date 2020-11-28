@@ -12,5 +12,8 @@
 	<classpathentry kind="lib" path="C:/Users/agonz/eclipse-workspace/ProjectCEN4072/jars/jar_files/guava-13.0.1.jar"/>
 	<classpathentry kind="lib" path="C:/Users/agonz/eclipse-workspace/ProjectCEN4072/jars/jar_files/javax.servlet-api-4.0.1.jar"/>
 	<classpathentry kind="lib" path="C:/Users/agonz/eclipse-workspace/ProjectCEN4072/jars/jar_files/javax.ws.rs-api-2.1.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/agonz/eclipse-workspace/ProjectCEN4072/jars/jar_files/selenium-java.jar/jar_files (15)/selenium-api-3.14.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/agonz/eclipse-workspace/ProjectCEN4072/jars/jar_files/selenium-java.jar/jar_files (15)/selenium-chrome-driver-3.14.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/agonz/eclipse-workspace/ProjectCEN4072/jars/jar_files/selenium-java.jar/jar_files (15)/selenium-remote-driver-3.14.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

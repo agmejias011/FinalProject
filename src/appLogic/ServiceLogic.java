@@ -8,6 +8,8 @@ package appLogic;
 import entity.DatastoreFacade;
 import entity.Service;
 import entity.Tower;
+
+import java.awt.print.Printable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -90,8 +92,10 @@ public class ServiceLogic {
         String[] stringArray = stringList.toArray(new String[stringList.size()]);
         for (int i = 0; i < stringArray.length; i++) {
             stringArray[i] = "[" + stringArray[i] + "]";
-        }
+        }  
+        
         return stringArray;
+       
     }
 
     public List<Service> selectServiceByTowerEmail(String authToken, String towerEmail) {

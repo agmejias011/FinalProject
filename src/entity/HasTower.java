@@ -138,39 +138,41 @@ public class HasTower {
     }
 
     public boolean acceptRequest() {
-        boolean resp = false;
-        this.setTowerAcceptDate(new Date());
-
-        boolean validAcceptance = validateAcceptance();
-        
-        if (validAcceptance) {
-            String sql = "UPDATE has_tower SET tower_accept_date=? WHERE service_id=? AND tower_id=?";
-
-            Database db = Database.getInstance();
-            //Database db = new Database();
-            try {
-                db.Connect();
-                db.setPreparedStatement(sql);
-                //for (int i = 0; i < this.getTowerId().size(); i++) {
-                int parameterIndex = 0;
-                db.getPreparedStatement().setDate(++parameterIndex, this.getTowerAcceptDate()!=null? new java.sql.Date(this.getTowerAcceptDate().getTime()):null);
-                db.getPreparedStatement().setInt(++parameterIndex, this.getServiceId());
-                db.getPreparedStatement().setInt(++parameterIndex, this.getTowerId());
-                db.ExecuteNonQuery();
-                //}
-                resp = true;
-            } catch (SQLException ex) {
-                Logger.getLogger(Service.class.getName()).log(Level.SEVERE, null, ex);
-            } finally {
-                if (db != null) {
-                    try {
-                        db.Close();
-                    } catch (SQLException ex) {
-                        Logger.getLogger(Service.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                }
-            }
-        }
+//        boolean resp = false;
+//        this.setTowerAcceptDate(new Date());
+//
+//        boolean validAcceptance = validateAcceptance();
+//        
+//        if (validAcceptance) {
+//            String sql = "UPDATE has_tower SET tower_accept_date=? WHERE service_id=? AND tower_id=?";
+//
+//            Database db = Database.getInstance();
+//            //Database db = new Database();
+//            try {
+//                db.Connect();
+//                db.setPreparedStatement(sql);
+//                //for (int i = 0; i < this.getTowerId().size(); i++) {
+//                int parameterIndex = 0;
+//                db.getPreparedStatement().setDate(++parameterIndex, this.getTowerAcceptDate()!=null? new java.sql.Date(this.getTowerAcceptDate().getTime()):null);
+//                db.getPreparedStatement().setInt(++parameterIndex, this.getServiceId());
+//                db.getPreparedStatement().setInt(++parameterIndex, this.getTowerId());
+//                db.ExecuteNonQuery();
+//                //}
+//                resp = true;
+//            } catch (SQLException ex) {
+//                Logger.getLogger(Service.class.getName()).log(Level.SEVERE, null, ex);
+//            } finally {
+//                if (db != null) {
+//                    try {
+//                        db.Close();
+//                    } catch (SQLException ex) {
+//                        Logger.getLogger(Service.class.getName()).log(Level.SEVERE, null, ex);
+//                    }
+//                }
+//            }
+//        }
+    	
+    	 boolean resp = true;
         return resp;
     }
 
@@ -299,35 +301,36 @@ public class HasTower {
     }
 
     boolean rateTower(Integer towerId, Integer serviceId, Integer rating) {
-        boolean resp = false;
-        this.setTowerDeclineDate(new Date());
+//        boolean resp = false;
+//        this.setTowerDeclineDate(new Date());
+//
+//        String sql = "UPDATE has_tower SET tower_rating=? WHERE service_id=? AND tower_id=?";
+//
+//        Database db = Database.getInstance();
+//        try {
+//            db.Connect();
+//            db.setPreparedStatement(sql);
+//            //for (int i = 0; i < this.getTowerId().size(); i++) {
+//            int parameterIndex = 0;
+//            db.getPreparedStatement().setInt(++parameterIndex, rating);
+//            db.getPreparedStatement().setInt(++parameterIndex, this.getServiceId());
+//            db.getPreparedStatement().setInt(++parameterIndex, this.getTowerId());
+//            db.ExecuteNonQuery();
+//            //}
+//            resp = true;
+//        } catch (SQLException ex) {
+//            Logger.getLogger(Service.class.getName()).log(Level.SEVERE, null, ex);
+//        } finally {
+//            if (db != null) {
+//                try {
+//                    db.Close();
+//                } catch (SQLException ex) {
+//                    Logger.getLogger(Service.class.getName()).log(Level.SEVERE, null, ex);
+//                }
+//            }
+//        }
 
-        String sql = "UPDATE has_tower SET tower_rating=? WHERE service_id=? AND tower_id=?";
-
-        Database db = Database.getInstance();
-        try {
-            db.Connect();
-            db.setPreparedStatement(sql);
-            //for (int i = 0; i < this.getTowerId().size(); i++) {
-            int parameterIndex = 0;
-            db.getPreparedStatement().setInt(++parameterIndex, rating);
-            db.getPreparedStatement().setInt(++parameterIndex, this.getServiceId());
-            db.getPreparedStatement().setInt(++parameterIndex, this.getTowerId());
-            db.ExecuteNonQuery();
-            //}
-            resp = true;
-        } catch (SQLException ex) {
-            Logger.getLogger(Service.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            if (db != null) {
-                try {
-                    db.Close();
-                } catch (SQLException ex) {
-                    Logger.getLogger(Service.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        }
-
+    	 boolean resp = true;
         return resp;
     }
 
