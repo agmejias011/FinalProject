@@ -26,7 +26,7 @@ import util.Location;
 /**
  * @author Andres Gonzalez
  * @author Peter J. Clarke Date: 10/28/2020 Purpose: Test cases for the
- *         DatastoreFacade class
+ *         ServiceLogic class
  *
  */
 
